@@ -8,7 +8,21 @@ def doExtractStringFromManifest(name) {
     return matcher.group(1)
 }
 
+buildscript{
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
+
 android {
+    // compileSdkVersion cdvCompileSdkVersion
+    // buildToolsVersion cdvBuildToolsVersion
+    compileSdkVersion 26
+    
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -17,6 +31,14 @@ android {
 
     defaultConfig {
         applicationId = doExtractStringFromManifest("package")
+    }
+}
+
+repositories {
+    google()
+    jcenter()
+    maven {
+        url "https://maven.google.com"
     }
 }
 
